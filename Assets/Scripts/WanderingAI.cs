@@ -8,8 +8,8 @@ public class WanderingAI : AIBase
 {
     [SerializeField] private GameObject[] wanderPoints = new GameObject[1];
     private GameObject lastWanderPoint;
-    private float cooldown;
-    private bool cooldownActive = false;
+    [SerializeField]  private float cooldown;
+    [SerializeField]  private bool cooldownActive = false;
 
     [SerializeField] private float minCooldown, maxCooldown;
 
@@ -32,8 +32,7 @@ public class WanderingAI : AIBase
                 cooldownActive = false;
             }
         }
-
-        if (!cooldownActive && ReachedDestination())
+        else if (!cooldownActive && ReachedDestination())
         {
             cooldownActive = true;
             cooldown = Random.Range(minCooldown, maxCooldown);
